@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamp on & off</title>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(0, 0, 0);
+        }
+
+        button { 
+            display: inline-block;
+            border-radius: 0.375rem;
+            color: #ffffff;
+            padding: 0.75rem 0.35rem;
+            text-decoration: none;
+            background-color: transparent;
+            border: 1px solid #5f5f5f;
+            width: 4rem;
+            height: 3rem;
+        }
+
+        button:hover {
+            background-color: #5f5f5f;
+        }
+
+        img {
+            width: 300px;
+            height: 300px;
+        }
+
+        span {
+            color: #fff;
+            font: normal arial 5pt;
+        }
+    </style>
+</head>
+<body>
+    <section>
+    <div>
+        
+        <img src="img/off.png" alt="lampada off" id="off" height="150px" width="150px" ondblclick="quebrar()">
+        <span>click double times in lamp</span>
+    </div>
+        <div>
+        <button onclick="ligar()">On</button>
+        <button onclick="desligar()">Off</button>
+        <button value="Desligar" onclick="estourar()">Piscar</button>
+    </div>
+    </section>
+
+    <script>
+        var img = document.getElementById('off')
+        var div = document.querySelectorAll('div')
+
+        function ligar() {
+            document.body.style.background = '#E6AF49';
+            img.src = 'img/on.png'
+        }
+
+        function desligar() {
+            img.src = 'img/off.png'
+            document.body.style.background = '#323232';
+        }
+
+        function estourar() {
+            var intervalo = 0
+            var contador = 0
+            for(; contador < 3; intervalo += 300) {
+                setTimeout(img.src = "ligar()", intervalo)
+                intervalo += 300
+                setTimeout(img.src = "desligar()", intervalo)
+                contador++
+            } 
+        }
+
+        function quebrar() {
+            document.body.style.background = '#FF0000';
+            img.src = 'img/broken.png'
+        }
+
+    </script>
+</body>
+</html>
